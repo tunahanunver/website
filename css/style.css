@@ -1,0 +1,698 @@
+@import url('https://fonts.googleapis.com/css2?family=Handjet:wght@100..900&family=Oswald:wght@200..700&display=swap');
+
+*,
+*::before,
+*::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+img{
+    max-width: 100%;
+    height: auto;
+}
+a{
+    text-decoration: none;
+    color: inherit;
+}
+li{
+    list-style: none;
+}
+a,
+span,
+button,
+input,
+img,
+i{
+    display: block;
+}
+button,
+input{
+    border: none;
+    background: none;
+    outline: none;
+    font: inherit;
+}
+button,
+i{
+    cursor: pointer;
+}
+input{
+    width: 100%;
+}
+html{
+    scroll-behavior: smooth;
+    font-family: "Handjet",sans-serif;
+    font-size: 10px;
+}
+body{
+    color: #243238;
+    line-height: 1.5;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+/* Tekrar Kullanılacaklar */
+
+.container{
+    padding-inline: 16px;
+}
+.section{
+    padding-block: 125px 87px;
+}
+h1, h2, h3, h4, h5, h6{
+    font-family: "Handjet 2",sans-serif;
+    font-style: normal;
+    line-height: 1.2;
+    margin-bottom: 5px;
+}
+.grid{
+    display: grid;
+    gap: 15px;
+}
+.img-cover{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.img-holder{
+    aspect-ratio: var(--width)/ var(--height);
+    background-color: #aeaeae;
+    overflow: hidden;
+}
+.section-titler{
+    font-size: 21px;
+    line-height: 30px;
+    color: #fff;
+    text-align: center;
+}
+.title-wrapper{
+    margin-block-end: 20px;
+}
+.title-shape{
+    margin-block-start: 14px;
+    margin-inline: auto;
+}
+.button{
+    max-width: max-content;
+    padding: 14px 35px;
+    background-color: #004d41;
+    color: #fff;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: 500;
+    transition: 1s ease-in-out;
+}
+.button:hover{
+    background-color: #fff;
+    color: #004d41;
+}
+
+/* Header */
+
+.header{
+    position: relative;
+    top: 0;
+    left: 0;
+    background-color: #004d41;
+    padding-block: 15px;
+    width: 100%;
+    z-index: 10;
+}
+.header .container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.nav_toggle{
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 30px;
+    height: 30px;
+    transition-duration: 0.5s;
+}
+.icon_menu{
+    transition-duration: 0.5s;
+    height: 2px;
+    width: 30px;
+    background-color: #fff;
+    position: relative;
+    text-align: left;
+}
+.icon_menu::before{
+    content: "";
+    transition-duration: 0.5s;
+    position: absolute;
+    width: 30px;
+    height: 2px;
+    top: 10px;
+    background-color: #fff;
+}
+.icon_menu::after{
+    content: "";
+    transition-duration: 0.5s;
+    position: absolute;
+    width: 30px;
+    height: 2px;
+    top: -10px;
+    background-color: #fff;
+}
+.nav_toggle.active .icon_menu{
+    transition: 0.5s;
+    background: transparent;
+}
+.nav_toggle.active .icon_menu::before{
+    transform: rotateZ(45deg) scaleX(1.6) translate(-5px, -5px);
+}
+.nav_toggle.active .icon_menu::after{
+    transform: rotateZ(-45deg) scaleX(1.6) translate(-5px, 5px);
+}
+.logo{
+    color: #fff;
+    font-size: 25px;
+    font-weight: bolder;
+}
+.nav_menu{
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 100;
+    display: grid;
+    place-content: center;
+    background-color: #fff;
+    visibility: hidden;
+    opacity: 0;
+    transition: all .5s cubic-bezier(0.9,0.03,0.69,0.22);
+}
+.show_menu{
+    top: 68px;
+    visibility: visible;
+    opacity: 1;
+    transition: all .7s cubic-bezier(0.9,0.03,0.69,0.22);
+}
+.nav_list{
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    text-align: center;
+}
+.nav_link{
+    font-size: 20px;
+    text-transform: uppercase;
+}
+
+/* Home */
+
+.home{
+    background-color: #01101d;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center left;
+}
+.home-content{
+    padding: 150px 15px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.home_title{
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #fff;
+}
+.typing_text{
+    width: 300px;
+    overflow: hidden;
+}
+.profession_text{
+    font-family: "Handjet",sans-serif;
+    font-size: 30px;
+    color: #fff;
+    text-transform: uppercase;
+    line-height: 1.2;
+    margin-bottom: 5px;
+    font-weight: 700;
+    position: relative;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke-color: #fff;
+    -webkit-text-stroke-width: 1px;
+    white-space: nowrap;
+}
+.typed-cursor{
+    display: none;
+}
+.skills_list{
+    display: flex;
+    row-gap: 15px;
+    column-gap: 30px;
+    flex-wrap: wrap;
+}
+.skills_list li{
+    list-style: disc;
+    color: #fff;
+    margin-inline-start: 15px;
+}
+.skills_list span{
+    text-transform: uppercase;
+    font-size: 14px;
+    font-family: 700;
+}
+.social_list{
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    margin-block-end: 25px;
+}
+.social_link{
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    display: grid;
+    place-content: center;
+    border: 1px solid #2c2c2c;
+    background-color: transparent;
+    font-size: 14px;
+    color: #fff;
+    border-radius: 50%;
+    transition: all .4s ease;
+}
+.social_link:hover{
+    background-color: #fff;
+    color: #01101d;
+}
+
+/* HİZMETLER */
+
+.service{
+    background-color: #01101d;
+}
+.service_list{
+    margin-block-start: 40px;
+    gap: 30px;
+}
+.service_card{
+    background-color: #04191f;
+    border: 1px solid #1b3034;
+    padding: 40px 30px 40px 40px;
+    border-radius: 12px;
+    transition: all.5s ease;
+}
+.service_card:hover{
+    background-color: #004d41;
+}
+.service_icon i{
+    color: #fff;
+    font-size: 60px;
+    padding: 15px 10px 0 0;
+}
+.service_concent{
+    margin-block-start: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.service_title{
+    text-transform: uppercase;
+    color: #fff;
+    font-size: 20px;
+}
+.service_desc{
+    color: #fff;
+    margin-block-end: 20px;
+    font-size: 30px;
+}
+
+/* HAKKIMDA */
+
+.about{
+    background-color: #01181d;
+    padding: 32 0 30px;
+}
+.about_content .bio{
+    color: #fff;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 30px;
+}
+.about_content h4{
+    margin-inline-start: 12px;
+    font-size: 22px;
+    font-weight: 400;
+    color: #fff;
+}
+.about_content .bio_desc{
+    margin-block: 27px 15px;
+    color: #cdcdcd;
+}
+.about_info{
+    display: flex;
+    flex-direction: column;
+    gap: 38px;
+    padding: 30px 20px 20px;
+    background-color: #051c20;
+    border: 2px solid #273a3f;
+    border-radius: 20px;
+}
+.about_info .name,
+.about_info .span{
+    color: #fff;
+    font-style: 16px;
+    font-weight: 400;
+}
+.about_buttons{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-block-start: 25px;
+    margin-block-end: 25px;
+}
+.about_buttons .button.download{
+    background-color: transparent;
+}
+.about_buttons .button.download:hover{
+    background-color: #fff;
+}
+
+/* SKİLLS */
+
+.skills{
+    background-color: #01101d;
+    padding-block-end: 45px;
+    padding-block-start: 45px;
+}
+
+.skills_container{
+    background-color: #031f25;
+    border-radius: 12px;
+    padding: 50px 45px;
+}
+
+.skills_item{
+    gap: 40px;
+}
+
+.skills_wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    overflow: hidden;
+}
+
+.skills_title h3{
+    font-weight: 400;
+    font-size: 16px;
+    color: #fff;
+}
+
+.progress_container{
+    background-color: #43585c;
+    height: 3px;
+    overflow: visible;
+}
+
+.progress_bar{
+    background-color: #fff;
+    position: relative;
+    line-height: 4px;
+    height: 3px;
+}
+
+.progress_bar .percent{
+    position: absolute;
+    top: -19px;
+    right: 0;
+    font-size: 16px;
+    font-weight: 400;
+    color: #cdcdcd;
+}
+
+/* BUSİNESS */
+
+/* BUSİNESS */
+
+.work {
+    background-color: #01101d;
+  }
+  
+  .work_list {
+    display: flex;
+    flex-direction: column; /* Sütunlar alt alta sıralanıyor */
+    gap: 35px; /* Sütunlar arasında boşluk */
+  }
+  
+  /* Resimlerin Sütun Boyutunu Alması */
+  .work_banner {
+    position: relative;
+    cursor: pointer;
+    width: 100%; /* Sütunun genişliğini alır */
+    height: 300px; /* İstediğiniz sabit bir yükseklik verebilirsiniz */
+  }
+  
+  .work_banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Resim taşmadan sütunun boyutunu alır */
+    transition: transform 0.5s ease;
+  }
+  
+  /* Hover Efekti */
+  .work_banner img:hover {
+    transform: scale(1.05); /* Hafif büyütme */
+  }
+  
+  .work_content {
+    position: absolute;
+    z-index: 10;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #004d4180;
+    transition: all 0.4s ease;
+  }
+  
+  .work_wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 100%;
+  }
+  
+  .card_icon i {
+    color: #fff;
+    font-size: 25px;
+    margin-bottom: 25px;
+  }
+  
+  .card_title {
+    color: #fff;
+    font-size: 23px;
+    text-transform: uppercase;
+    transition: 0.5s;
+  }
+  
+  .card_desc {
+    color: #fff;
+    line-height: 1.2;
+  }
+  
+  /* Hover Efekti */
+  .work_banner:hover .work_content {
+    top: 0;
+  }
+  
+  /* Masaüstü İçin Alt Alta Sıralama */
+  @media (min-width: 1024px) {
+    .work_list {
+      flex-direction: column; /* Masaüstünde de alt alta sıralama */
+    }
+
+    .container {
+        max-width: 1200px; /* Maksimum genişlik */
+        margin: 0 auto; /* Ortalamak için */
+        padding: 0 50px; /* Sağdan ve soldan boşluk */
+      }
+    
+    .work_banner {
+      height: 400px; /* Daha büyük ekranlar için yükseklik ayarlaması */
+    }
+  }
+
+/* COUNT */
+
+.count{
+    background-color: #031f25;
+    background-size: cover;
+    background-position: center center;
+    padding: 125px 0 130px;
+}
+.count_content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 45px;
+    text-align: center;
+}
+.count_wrapper h3{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    font-size: 40px;
+    font-weight: 700;
+    color: #fff;
+}
+.count_desc{
+    color: #fff;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+/* TEAM */
+
+.team{
+    background-color: #01101d;
+}
+.team_list{
+    margin-block-start: 50px;
+    grid: 25px;
+}
+.team_item{
+    border: 1px solid #192e33;
+    padding: 60px 0 30px;
+    border-radius: 10px;
+    text-align: center;
+}
+.team_banner img{
+    margin-inline: auto;
+    height: 170px;
+    width: 170px;
+}
+.team_content{
+    padding: 23px 25px 30px;
+}
+.team_title{
+    font-size: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #fff;
+}
+.team_desc{
+    color: #fff;
+}
+.team_social_list{
+    margin-block-start: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+}
+.team_social_list i{
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 50%;
+    background-color: #004d41;
+    font-size: 18px;
+    color: #fff;
+}
+
+/* CONTACT */
+
+.contact{
+    background-color: #031f25;
+}
+.contact_wrapper{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    margin-block-end: 20px;
+}
+.input_field{
+    background-color: #01101d;
+    height: 60px;
+    padding: 6px 12px;
+    padding-left: 30px;
+    border-radius: 5px;
+    border: 1px solid #192e33;
+    color: #fff;
+    font-size: 16px;
+}
+.textarea_field {
+    background-color: #01101d;
+    padding: 6px 12px;
+    padding-left: 30px;
+    border-radius: 5px;
+    border: 1px solid #192e33;
+    color: #fff;
+    font-size: 16px;
+    width: 100%; /* Genişlik ayarlandı */
+    max-width: 1100px; /* Diğer input alanlarıyla uyumlu */
+    height: 170px;
+    margin-block-start: 20px;
+    box-sizing: border-box; /* Kenar boşlukları dahil */
+    resize: none; /* Boyutlandırmayı kapattık */
+}
+
+.input_field::placeholder,
+.textarea_field::placeholder {
+    color: #fff;
+}
+.contact_button{
+    border-radius: 5px;
+    margin-block-start: 25px;
+    margin-inline: auto;
+}
+
+/* SWİPER */
+
+.brand{
+    background-color: #01101d;
+}
+
+/* FOOTER */
+
+.footer{
+    padding: 26px 24px;
+    background-color: #031f25;
+    color: #fff;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 400;
+}
+
+/* BACK TOP BUTTON */
+
+.btn-top{
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #004d41;
+    padding: 10px;
+    width: 45px;
+    height: 45px;
+    line-height: 45px;
+    place-content: center;
+    display: grid;
+    color: #fff;
+    cursor: pointer;
+    visibility: hidden;
+    opacity: 0;
+    border-radius: 12px;
+    transition: all .4s ease;
+}
+.btn-top.active{
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(-24px);
+}
