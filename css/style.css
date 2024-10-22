@@ -331,6 +331,7 @@ h1, h2, h3, h4, h5, h6{
 .about{
     background-color: #01181d;
     padding: 32 0 30px;
+    padding-block-start: 45px;
 }
 .about_content .bio{
     color: #fff;
