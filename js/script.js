@@ -1,12 +1,20 @@
 const navToggle = document.querySelector(".nav_toggle"),
-      navMenu = document.querySelector(".nav_menu");
+      navMenu = document.querySelector(".nav_menu"),
+      navLinks = document.querySelectorAll(".nav_link"); // Menüdeki linkleri seçiyoruz
 
+// Menü toggle işlevi
+navToggle.addEventListener("click", () => {
+    navMenu.classList.toggle("show_menu");
+    navToggle.classList.toggle("active");
+});
 
-    navToggle.addEventListener("click", () => {
-        navMenu.classList.toggle("show_menu");
-        navToggle.classList.toggle("active");
-    })
-
+// Her bir linke tıklanıldığında menüyü kapatma işlevi
+navLinks.forEach(link => {
+    link.addEventListener("click", () => {
+        navMenu.classList.remove("show_menu");
+        navToggle.classList.remove("active");
+    });
+});
 // TYPİNG TEXT
 
 var typed = new Typed(".profession_text", {
