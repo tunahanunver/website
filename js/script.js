@@ -15,6 +15,7 @@ navLinks.forEach(link => {
         navToggle.classList.remove("active");
     });
 });
+
 // TYPİNG TEXT
 
 var typed = new Typed(".profession_text", {
