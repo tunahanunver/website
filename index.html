@@ -446,21 +446,47 @@
     <section class="section contact" id="contact">
         <div class="container">
             <div class="title-wrapper">
-                <h3 class="section-titler">İletişim</h3>
+                <h3 class="section-title">İletişim</h3>
                 <img src="./image/title-shap.png" alt="" class="title-shape">
             </div>
             <div class="contact_container">
-                <div class="contact_wrapper">
-                    <input type="text" placeholder="İsim" class="input_field">
-                    <input type="text" placeholder="Email" class="input_field">
-                    <input type="text" placeholder="Konu" class="input_field">
-                </div>
-                <!-- Textarea'ya yeni bir class ekledim -->
-                <textarea placeholder="Mesajınız" class="textarea_field" cols="30" rows="10"></textarea>
-                <a href="#" class="button contact_button">Gönder</a>
+                <form id="contactForm">
+                    <div class="contact_wrapper">
+                        <input type="text" placeholder="İsim" class="input_field" name="name" required>
+                        <input type="email" placeholder="Email" class="input_field" name="email" required>
+                        <input type="text" placeholder="Konu" class="input_field" name="subject" required>
+                    </div>
+                    <textarea placeholder="Mesajınız" class="textarea_field" name="message" cols="30" rows="10" required></textarea>
+                    <button type="submit" class="button contact_button">Gönder</button>
+                </form>
+                <div id="formResponse"></div>
             </div>
         </div>
     </section>
+    
+    <script>
+        document.getElementById("contactForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Formun varsayılan davranışını durdur
+    
+            // Form verilerini al
+            const name = document.querySelector("input[name='name']").value;
+            const email = document.querySelector("input[name='email']").value;
+            const subject = document.querySelector("input[name='subject']").value;
+            const message = document.querySelector("textarea[name='message']").value;
+    
+            // Mailto bağlantısını oluştur
+            const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`İsim: ${name}\nMesaj: ${message}`)}`;
+    
+            // Mailto bağlantısını aç
+            window.location.href = mailtoLink;
+    
+            // Başarı mesajını göster
+            document.getElementById("formResponse").innerText = "E-posta istemcisi açıldı.";
+            
+            // Formu sıfırla
+            document.getElementById("contactForm").reset();
+        });
+    </script>
 
     <section class="section brand">
         <div class="container">
