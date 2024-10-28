@@ -469,13 +469,12 @@
             event.preventDefault(); // Formun varsayılan davranışını durdur
     
             // Form verilerini al
-            const name = document.querySelector("input[name='name']").value;
             const email = document.querySelector("input[name='email']").value;
             const subject = document.querySelector("input[name='subject']").value;
             const message = document.querySelector("textarea[name='message']").value;
     
             // Mailto bağlantısını oluştur
-            const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`İsim: ${name}\nMesaj: ${message}`)}`;
+            const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
     
             // Mailto bağlantısını aç
             window.location.href = mailtoLink;
